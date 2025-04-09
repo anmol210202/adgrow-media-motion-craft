@@ -213,3 +213,209 @@
   background: linear-gradient(to right, #6E42CA, #2DD4BF);
   border-radius: 2px;
 }
+
+/* Interactive Background */
+.interactive-bg {
+  overflow: hidden;
+}
+
+.grid-lines {
+  background-image: 
+    linear-gradient(to right, rgba(110, 66, 202, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(110, 66, 202, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.3;
+  transition: transform 0.2s ease-out;
+}
+
+/* Gradient Orbs */
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.7;
+  transition: transform 0.4s ease-out;
+}
+
+.gradient-orb-1 {
+  background: linear-gradient(45deg, #6E42CA 0%, #2DD4BF 100%);
+  width: 50vw;
+  height: 50vw;
+  top: -10%;
+  left: -10%;
+}
+
+.gradient-orb-2 {
+  background: linear-gradient(225deg, #9cb3fd 0%, #2DD4BF 100%);
+  width: 40vw;
+  height: 40vw;
+  bottom: -10%;
+  right: -5%;
+}
+
+.gradient-orb-3 {
+  background: linear-gradient(90deg, #6E42CA 30%, #9cb3fd 100%);
+  width: 30vw;
+  height: 30vw;
+  top: 50%;
+  left: 30%;
+}
+
+/* Text Gradient Effect */
+.text-gradient {
+  background: linear-gradient(to right, #6E42CA, #2DD4BF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Line Gradient */
+.line-gradient {
+  height: 4px;
+  background: linear-gradient(to right, #6E42CA, #2DD4BF);
+  border-radius: 2px;
+}
+
+/* Modern Services Section */
+.service-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+  z-index: 1;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-card > div {
+  position: relative;
+  z-index: 2;
+}
+
+/* Chatbot Styles */
+.chatbot-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6E42CA, #2DD4BF);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 50;
+  transition: all 0.3s ease;
+}
+
+.chatbot-toggle:hover {
+  transform: scale(1.05);
+}
+
+.chatbot-container {
+  position: fixed;
+  bottom: 8rem;
+  right: 2rem;
+  width: 350px;
+  height: 500px;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 49;
+  overflow: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.chatbot-header {
+  background: linear-gradient(135deg, #6E42CA, #2DD4BF);
+  color: white;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.chatbot-messages {
+  height: calc(100% - 120px);
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message.bot {
+  background-color: hsl(var(--muted));
+  align-self: flex-start;
+  border-bottom-left-radius: 0;
+}
+
+.message.user {
+  background: linear-gradient(135deg, #6E42CA, #2DD4BF);
+  color: white;
+  align-self: flex-end;
+  margin-left: auto;
+  border-bottom-right-radius: 0;
+}
+
+.chatbot-input {
+  border-top: 1px solid hsl(var(--border));
+  padding: 0.75rem;
+  display: flex;
+  background: white;
+}
+
+/* Define responsive typography classes */
+.heading-xl {
+  @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+}
+
+.heading-lg {
+  @apply text-3xl md:text-4xl font-bold;
+}
+
+/* Navigation polishing */
+nav.polished {
+  transition: all 0.3s ease;
+}
+
+nav.polished.scrolled {
+  @apply backdrop-blur-lg bg-background/80 shadow-md;
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #6E42CA, #2DD4BF);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}

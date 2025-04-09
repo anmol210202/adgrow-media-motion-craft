@@ -5,68 +5,160 @@ import { ServiceCard } from "@/components/service-card";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Smartphone, BadgeCheck, BarChart3, Video, Globe, TrendingUp, Activity, Target, Users, MessageSquare } from "lucide-react";
+import { 
+  ArrowRight, 
+  Smartphone, 
+  BadgeCheck, 
+  BarChart3, 
+  Video, 
+  Globe, 
+  TrendingUp, 
+  Activity, 
+  Target, 
+  Users, 
+  MessageCircle 
+} from "lucide-react";
 
 const services = [
   {
     icon: Smartphone,
     title: "Social Media Marketing",
     description: "Strategic campaigns across platforms to engage your audience and drive conversions.",
-    gradient: "from-indigo-700 to-blue-600"
+    gradient: "bg-gradient-to-r from-indigo-700 to-blue-600",
+    longDescription: "Our social media marketing services help businesses build meaningful connections with their target audience across all major platforms. We create data-driven strategies that increase engagement, build brand awareness, and drive conversions.",
+    features: [
+      "Custom strategy for each social platform",
+      "Content creation and curation",
+      "Community management and engagement",
+      "Performance tracking and optimization",
+      "Paid social media advertising campaigns"
+    ]
   },
   {
     icon: BadgeCheck,
     title: "WhatsApp Marketing",
     description: "Direct messaging strategies that connect with customers on their preferred platform.",
-    gradient: "from-emerald-600 to-teal-500"
+    gradient: "bg-gradient-to-r from-emerald-600 to-teal-500",
+    longDescription: "Our WhatsApp marketing services help businesses leverage the world's most popular messaging app to connect with customers, provide support, and drive sales with personalized, direct communication strategies.",
+    features: [
+      "WhatsApp Business API integration",
+      "Automated messaging workflows",
+      "Broadcast message campaigns",
+      "Interactive chatbots",
+      "Customer service integration"
+    ]
   },
   {
     icon: BarChart3,
     title: "Data & Analytics",
     description: "In-depth analytics to track performance and optimize your marketing strategies.",
-    gradient: "from-purple-600 to-indigo-600"
+    gradient: "bg-gradient-to-r from-purple-600 to-indigo-600",
+    longDescription: "Our data analytics services provide businesses with actionable insights derived from comprehensive data analysis. We help you understand your customers better, optimize marketing spend, and make data-driven decisions for growth.",
+    features: [
+      "Custom dashboard development",
+      "Marketing performance analytics",
+      "Customer journey tracking",
+      "Conversion optimization",
+      "Competitive analysis"
+    ]
   },
   {
     icon: Video,
     title: "YouTube Ads",
     description: "Compelling video campaigns that capture attention and drive brand awareness.",
-    gradient: "from-rose-600 to-pink-600"
+    gradient: "bg-gradient-to-r from-rose-600 to-pink-600",
+    longDescription: "Our YouTube advertising services help brands reach their target audience through strategic video ad placements. We create compelling video content and optimize targeting to maximize engagement and ROI.",
+    features: [
+      "Strategic video ad campaign planning",
+      "Custom audience targeting",
+      "Video ad creative development",
+      "Performance tracking and optimization",
+      "YouTube channel growth strategies"
+    ]
   },
   {
     icon: Globe,
     title: "Website & App Development",
     description: "Custom digital solutions that engage users and represent your brand.",
-    gradient: "from-amber-600 to-orange-500"
+    gradient: "bg-gradient-to-r from-amber-600 to-orange-500",
+    longDescription: "Our web and app development services deliver custom digital solutions designed to enhance user experience and drive business growth. We create responsive, SEO-friendly websites and intuitive mobile applications tailored to your specific needs.",
+    features: [
+      "Responsive website design",
+      "E-commerce development",
+      "Mobile app development",
+      "User experience optimization",
+      "Website maintenance and support"
+    ]
   },
   {
     icon: TrendingUp,
     title: "Growth Strategy",
     description: "Comprehensive planning to accelerate your business growth and market presence.",
-    gradient: "from-sky-600 to-cyan-500"
+    gradient: "bg-gradient-to-r from-sky-600 to-cyan-500",
+    longDescription: "Our growth strategy services provide businesses with a clear roadmap for sustainable growth. We analyze your market position, identify opportunities, and develop comprehensive strategies to help you reach your business objectives.",
+    features: [
+      "Market opportunity analysis",
+      "Customer acquisition strategy",
+      "Revenue optimization",
+      "Growth metrics and KPI setting",
+      "Competitive positioning"
+    ]
   },
   {
     icon: Activity,
     title: "PPC & SEM",
     description: "Targeted pay-per-click campaigns that drive qualified traffic and leads.",
-    gradient: "from-violet-600 to-purple-600"
+    gradient: "bg-gradient-to-r from-violet-600 to-purple-600",
+    longDescription: "Our PPC and SEM services help businesses maximize their online visibility and drive qualified traffic through strategic paid search campaigns. We optimize for conversions while minimizing cost per acquisition.",
+    features: [
+      "Google Ads campaign management",
+      "Keyword research and optimization",
+      "Ad copy and creative development",
+      "Landing page optimization",
+      "Retargeting campaigns"
+    ]
   },
   {
     icon: Target,
     title: "SEO Services",
     description: "Optimize your online presence to rank higher in search engine results.",
-    gradient: "from-green-600 to-emerald-500"
+    gradient: "bg-gradient-to-r from-green-600 to-emerald-500",
+    longDescription: "Our SEO services help improve your website's visibility in search engines, driving organic traffic and qualified leads. We employ white-hat techniques to achieve sustainable rankings improvement.",
+    features: [
+      "Technical SEO audits",
+      "On-page optimization",
+      "Content strategy development",
+      "Link building campaigns",
+      "Local SEO optimization"
+    ]
   },
   {
     icon: Users,
     title: "Influencer Marketing",
     description: "Partner with key industry voices to extend your reach and credibility.",
-    gradient: "from-red-600 to-rose-500"
+    gradient: "bg-gradient-to-r from-red-600 to-rose-500",
+    longDescription: "Our influencer marketing services connect brands with relevant content creators to extend reach and build credibility. We identify, vet, and manage influencer relationships to create authentic promotional content.",
+    features: [
+      "Influencer identification and vetting",
+      "Campaign strategy development",
+      "Content collaboration management",
+      "Performance tracking",
+      "ROI measurement"
+    ]
   },
   {
-    icon: MessageSquare,
+    icon: MessageCircle,
     title: "Content Marketing",
     description: "Create valuable content that resonates with your audience and drives engagement.",
-    gradient: "from-blue-600 to-indigo-600"
+    gradient: "bg-gradient-to-r from-blue-600 to-indigo-600",
+    longDescription: "Our content marketing services help businesses create and distribute valuable, relevant content that attracts and engages target audiences. We develop comprehensive content strategies aligned with your business goals.",
+    features: [
+      "Content strategy development",
+      "Blog writing and management",
+      "Email marketing campaigns",
+      "Ebook and white paper creation",
+      "Content distribution strategies"
+    ]
   }
 ];
 
@@ -118,7 +210,9 @@ export default function Services() {
                   icon={service.icon}
                   title={service.title}
                   description={service.description}
-                  gradient={`bg-gradient-to-r ${service.gradient}`}
+                  gradient={service.gradient}
+                  longDescription={service.longDescription}
+                  features={service.features}
                 />
               ))}
             </motion.div>
@@ -179,7 +273,7 @@ export default function Services() {
         </section>
         
         {/* CTA Section */}
-        <section className="py-20 px-4 md:px-6 bg-gradient-to-br from-primary to-accent text-white">
+        <section className="py-20 px-4 md:px-6 bg-gradient-to-br from-[#6E42CA] to-[#2DD4BF] text-white">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto text-center">
               <motion.h2 
