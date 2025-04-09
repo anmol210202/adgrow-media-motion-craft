@@ -4,7 +4,14 @@ import { useRef } from "react";
 import { Sphere, MeshDistortMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
-function AnimatedSphere({ position, color, speed, distort }) {
+interface AnimatedSphereProps {
+  position: [number, number, number];
+  color: string;
+  speed: number;
+  distort: number;
+}
+
+function AnimatedSphere({ position, color, speed, distort }: AnimatedSphereProps) {
   const mesh = useRef<THREE.Mesh>(null);
   
   useFrame((_state, delta) => {
@@ -28,9 +35,13 @@ function AnimatedSphere({ position, color, speed, distort }) {
   );
 }
 
-export default function AnimatedBackground({ className }) {
+interface AnimatedBackgroundProps {
+  className?: string;
+}
+
+export default function AnimatedBackground({ className }: AnimatedBackgroundProps) {
   return (
-    <div className={`absolute inset-0 -z-10 opacity-60 ${className}`}>
+    <div className={`absolute inset-0 -z-10 opacity-60 ${className || ''}`}>
       <Canvas
         camera={{ position: [0, 0, 6], fov: 75 }}
         dpr={[1, 2]}

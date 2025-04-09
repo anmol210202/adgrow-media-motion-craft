@@ -1,7 +1,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
-import CountUp from "countup.js";
+import { CountUp } from "countup.js";
 
 interface CounterProps {
   end: number;
