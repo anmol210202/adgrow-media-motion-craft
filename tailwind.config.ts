@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				agency: {
+					purple: '#6E42CA',
+					teal: '#2DD4BF',
+					dark: '#1E1B2C',
+					gray: '#8E9196',
+					light: '#F8FAFC'
 				}
 			},
 			borderRadius: {
@@ -84,11 +92,33 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'ripple': {
+					'0%': { transform: 'scale(0)', opacity: '1' },
+					'100%': { transform: 'scale(4)', opacity: '0' }
+				},
+				'counter': {
+					'0%': { transform: 'translateY(0)' },
+					'10%': { transform: 'translateY(-100%)' },
+					'11%': { transform: 'translateY(100%)' },
+					'20%, 100%': { transform: 'translateY(0)' }
+				},
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 6s ease-in-out infinite',
+				'ripple': 'ripple 1s linear infinite',
+				'counter': 'counter 5s ease forwards',
+				'fade-in': 'fade-in 0.6s ease-out forwards'
 			}
 		}
 	},
