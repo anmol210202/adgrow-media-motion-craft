@@ -1,7 +1,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
-import { CountUp } from "countup.js";
 
 interface CounterProps {
   end: number;
@@ -14,26 +13,33 @@ export function Counter({ end, suffix = "", duration = 2.5 }: CounterProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (isInView && !hasAnimated && countUpRef.current) {
-      const countUp = new CountUp(countUpRef.current, end, {
-        duration: duration,
-        suffix: suffix,
-        useEasing: true,
-        useGrouping: true,
-        separator: ",",
-        decimal: ".",
-      });
+    if (isInView && !hasAnimated) {
+      let startTime: number | null = null;
+      let animationFrame: number;
       
-      if (!countUp.error) {
-        countUp.start();
-        setHasAnimated(true);
-      } else {
-        console.error(countUp.error);
-      }
+      const animate = (timestamp: number) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+        const currentCount = Math.floor(progress * end);
+        
+        setCount(currentCount);
+        
+        if (progress < 1) {
+          animationFrame = requestAnimationFrame(animate);
+        } else {
+          setCount(end);
+          setHasAnimated(true);
+        }
+      };
+      
+      animationFrame = requestAnimationFrame(animate);
+      
+      return () => cancelAnimationFrame(animationFrame);
     }
-  }, [isInView, end, suffix, duration, hasAnimated]);
+  }, [isInView, end, duration, hasAnimated]);
 
   return (
     <div ref={sectionRef} className="text-center">
@@ -41,7 +47,7 @@ export function Counter({ end, suffix = "", duration = 2.5 }: CounterProps) {
         ref={countUpRef}
         className="text-4xl md:text-5xl font-bold text-primary mb-2"
       >
-        0
+        {count}{suffix}
       </span>
       <div className="line-gradient mt-2 mx-auto w-16" />
     </div>
