@@ -97,7 +97,7 @@ export function Chatbot() {
     <>
       {/* Chat toggle button */}
       <motion.button
-        className="chatbot-toggle"
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-agency-purple to-agency-teal flex items-center justify-center text-white shadow-lg hover:shadow-xl"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
@@ -114,12 +114,12 @@ export function Chatbot() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 15 }}
-            className="chatbot-container"
+            className="fixed bottom-24 right-6 w-[350px] h-[500px] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden z-40 border border-agency-purple/20 flex flex-col"
           >
-            <div className="chatbot-header flex justify-between items-center">
-              <div className="flex items-center gap-2">
+            <div className="bg-gradient-to-r from-agency-purple to-agency-teal p-4 flex justify-between items-center">
+              <div className="flex items-center gap-2 text-white">
                 <MessageCircle size={18} />
-                <span>AdGrow Assistant</span>
+                <span className="font-semibold">AdGrow Assistant</span>
               </div>
               <Button 
                 variant="ghost" 
@@ -131,40 +131,50 @@ export function Chatbot() {
               </Button>
             </div>
 
-            <div className="chatbot-messages flex flex-col">
+            <div className="flex-1 overflow-y-auto p-4 bg-gray-50 dark:bg-gray-800">
               {messages.map((msg) => (
                 <div 
                   key={msg.id} 
-                  className={`message ${msg.sender}`}
+                  className={`mb-3 ${msg.sender === 'bot' ? 'mr-12' : 'ml-12'}`}
                 >
-                  {msg.text}
+                  <div 
+                    className={`p-3 rounded-2xl ${
+                      msg.sender === 'bot'
+                        ? 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-bl-none shadow'
+                        : 'bg-gradient-to-r from-agency-purple to-agency-teal text-white rounded-br-none'
+                    }`}
+                  >
+                    {msg.text}
+                  </div>
                 </div>
               ))}
 
               {isTyping && (
-                <div className="message bot">
-                  <div className="flex gap-1">
-                    <span className="animate-bounce">.</span>
-                    <span className="animate-bounce" style={{ animationDelay: "0.2s" }}>.</span>
-                    <span className="animate-bounce" style={{ animationDelay: "0.4s" }}>.</span>
+                <div className="mb-3 mr-12">
+                  <div className="p-3 rounded-2xl bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-bl-none shadow">
+                    <div className="flex space-x-1">
+                      <div className="h-2 w-2 bg-agency-purple/70 rounded-full animate-bounce"></div>
+                      <div className="h-2 w-2 bg-agency-purple/70 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+                      <div className="h-2 w-2 bg-agency-purple/70 rounded-full animate-bounce" style={{ animationDelay: "0.4s" }}></div>
+                    </div>
                   </div>
                 </div>
               )}
               <div ref={messagesEndRef} />
             </div>
 
-            <form onSubmit={handleSendMessage} className="chatbot-input">
+            <form onSubmit={handleSendMessage} className="p-3 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 flex">
               <Input
                 type="text"
                 placeholder="Type your message..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                className="flex-1 border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                className="flex-1 bg-gray-100 dark:bg-gray-800 border-0 focus-visible:ring-1 focus-visible:ring-agency-purple"
               />
               <Button 
                 type="submit"
                 size="icon"
-                className="bg-gradient-to-r from-[#6E42CA] to-[#2DD4BF] hover:opacity-90 ml-2"
+                className="bg-gradient-to-r from-agency-purple to-agency-teal hover:opacity-90 ml-2 text-white"
                 disabled={!input.trim()}
               >
                 <Send size={18} />
