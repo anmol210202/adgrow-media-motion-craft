@@ -49,36 +49,31 @@ export default function AnimatedBackground({ className }: AnimatedBackgroundProp
       aria-hidden="true"
       style={{
         perspective: "1000px",
-        position: "relative" // Add this to address framer-motion warning
       }}
     >
       {/* Interactive gradient orbs that follow mouse/touch */}
       <div 
         className="gradient-orb gradient-orb-1" 
         style={{ 
-          transform: `translate3d(${mousePosition.x * -30}px, ${mousePosition.y * -30}px, 0) scale(${1 + Math.abs(mousePosition.x) * 0.1})`,
-          transition: "transform 0.2s ease-out"
+          transform: `translate3d(${mousePosition.x * -30}px, ${mousePosition.y * -30}px, 0) scale(${1 + Math.abs(mousePosition.x) * 0.1})` 
         }}
       />
       <div 
         className="gradient-orb gradient-orb-2" 
         style={{ 
-          transform: `translate3d(${mousePosition.x * 20}px, ${mousePosition.y * 20}px, 0) scale(${1 + Math.abs(mousePosition.y) * 0.1})`,
-          transition: "transform 0.2s ease-out"
+          transform: `translate3d(${mousePosition.x * 20}px, ${mousePosition.y * 20}px, 0) scale(${1 + Math.abs(mousePosition.y) * 0.1})` 
         }}
       />
       <div 
         className="gradient-orb gradient-orb-3" 
         style={{ 
-          transform: `translate3d(${mousePosition.x * 10}px, ${mousePosition.y * 10}px, 0) rotate(${mousePosition.x * 5}deg)`,
-          transition: "transform 0.2s ease-out"
+          transform: `translate3d(${mousePosition.x * 10}px, ${mousePosition.y * 10}px, 0) rotate(${mousePosition.x * 5}deg)` 
         }}
       />
       
       {/* Parallax grid lines for depth effect */}
       <div className="absolute inset-0 grid-lines" style={{ 
-        transform: `translate3d(${mousePosition.x * -15}px, ${mousePosition.y * -15}px, 0)`,
-        transition: "transform 0.2s ease-out"
+        transform: `translate3d(${mousePosition.x * -15}px, ${mousePosition.y * -15}px, 0)` 
       }}></div>
       
       {/* Overlay for better text contrast */}
