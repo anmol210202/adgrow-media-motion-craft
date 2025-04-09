@@ -1,11 +1,11 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import * as THREE from "three";
 import { Sphere, MeshDistortMaterial } from "@react-three/drei";
+import * as THREE from "three";
 
 function AnimatedSphere({ position, color, speed, distort }) {
-  const mesh = useRef();
+  const mesh = useRef<THREE.Mesh>(null);
   
   useFrame((_state, delta) => {
     if (mesh.current) {
