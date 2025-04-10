@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -48,7 +49,9 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 polished ${
-        scrolled ? "scrolled py-3 bg-background/95 backdrop-blur-md shadow-md" : "py-6"
+        scrolled 
+          ? "scrolled py-3 bg-background/75 backdrop-blur-lg shadow-md" 
+          : "py-6 backdrop-blur-md bg-background/30"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
@@ -123,7 +126,7 @@ export default function Navbar() {
                 {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </SheetTrigger>
-            <SheetContent side="top" className="pt-16 h-screen bg-background/95 backdrop-blur-lg border-none">
+            <SheetContent side="top" className="pt-16 h-screen bg-background/95 backdrop-blur-xl border-none">
               <div className="flex flex-col items-center justify-center h-full space-y-8">
                 {navItems.map((item, index) => (
                   <motion.div
