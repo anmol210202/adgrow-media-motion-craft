@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,6 +10,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 const navItems = [
   { name: "Home", path: "/" },
   { name: "Services", path: "/services" },
+  { name: "Portfolio", path: "/portfolio" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
 ];

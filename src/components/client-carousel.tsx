@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Carousel,
@@ -8,6 +8,7 @@ import {
   CarouselPrevious,
   CarouselNext
 } from "@/components/ui/carousel";
+import useEmblaCarousel from "embla-carousel-react";
 
 type Client = {
   id: number;
@@ -26,8 +27,46 @@ const clients: Client[] = [
 ];
 
 export const ClientCarousel = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: true,
+    dragFree: true,
+  });
+  
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  
+  // Auto-scroll logic
+  useEffect(() => {
+    if (!emblaApi) return;
+    
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        emblaApi.scrollNext();
+      }, 3000); // Scroll every 3 seconds
+    }
+    
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [emblaApi, isPaused]);
+  
+  // Pause on hover handlers
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  };
+  
+  const handleMouseLeave = () => {
+    setIsPaused(false);
+  };
+
   return (
-    <div className="py-16 px-4 md:px-6 overflow-hidden">
+    <div 
+      className="py-16 px-4 md:px-6 overflow-hidden"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <motion.h2 
@@ -49,10 +88,7 @@ export const ClientCarousel = () => {
         </div>
         
         <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
+          ref={emblaRef}
           className="w-full"
         >
           <CarouselContent>
