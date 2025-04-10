@@ -49,6 +49,7 @@ export default function AnimatedBackground({ className }: AnimatedBackgroundProp
       aria-hidden="true"
       style={{
         perspective: "1000px",
+        position: "absolute", // Adding explicit position for Framer Motion
       }}
     >
       {/* Interactive gradient orbs that follow mouse/touch */}

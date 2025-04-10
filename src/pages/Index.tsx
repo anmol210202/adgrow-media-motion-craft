@@ -9,6 +9,7 @@ import AnimatedBackground from "@/components/animated-bg";
 import { ServiceCard } from "@/components/service-card";
 import { Button } from "@/components/ui/button";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ClientCarousel } from "@/components/client-carousel";
 
 const services = [
   {
@@ -194,6 +195,9 @@ export default function Index() {
           </div>
         </section>
         
+        {/* Client Carousel Section */}
+        <ClientCarousel />
+        
         {/* CTA Section */}
         <section className="py-20 px-4 md:px-6 bg-primary/5">
           <div className="container mx-auto">
@@ -302,9 +306,9 @@ export default function Index() {
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                        Case Studies
-                      </a>
+                      <Link to="/works" className="text-muted-foreground hover:text-foreground transition-colors">
+                        Our Works
+                      </Link>
                     </li>
                     <li>
                       <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
