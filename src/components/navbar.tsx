@@ -23,6 +23,10 @@ export default function Navbar() {
       const offset = window.scrollY;
       if (offset > 50) {
         setScrolled(true);
+        // Close mobile menu when scrolling
+        if (isOpen) {
+          setIsOpen(false);
+        }
       } else {
         setScrolled(false);
       }
@@ -32,7 +36,7 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isOpen]);
 
   useEffect(() => {
     setIsOpen(false);
@@ -140,6 +144,7 @@ export default function Navbar() {
                           ? "active text-primary"
                           : "text-foreground/80"
                       }`}
+                      onClick={() => setIsOpen(false)}
                     >
                       {item.name}
                     </Link>
@@ -150,7 +155,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.3 }}
                 >
-                  <Button className="bg-gradient-to-r from-[#6E42CA] to-[#2DD4BF] hover:opacity-90" asChild>
+                  <Button className="bg-gradient-to-r from-[#6E42CA] to-[#2DD4BF] hover:opacity-90" asChild onClick={() => setIsOpen(false)}>
                     <Link to="/contact">Get Started</Link>
                   </Button>
                 </motion.div>
